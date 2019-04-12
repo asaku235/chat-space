@@ -1,0 +1,87 @@
+.side-content
+  .side-header
+    %p.side-header__user-name
+      現在のユーザ名
+    .side-header__icons
+      = link_to "", class: "iconcolor" do
+        = fa_icon 'pencil-square-o'
+      = link_to "" , class: "iconcolor" do
+        = fa_icon 'cog'
+
+  .side-groups
+    .side-group
+      .side-group__name
+        グループ名
+      .side-group__message
+        メッセージ
+    .side-group
+      .side-group__name
+        グループ名
+      .side-group__message
+        メッセージ
+    .side-group
+      .side-group__name
+        グループ名
+      .side-group__message
+        メッセージ
+
+.main-content
+  .main-header
+    .left
+      .left__selected-group
+        選択されたグループ名
+      .left__members
+        Members : karimen
+    .right
+      = link_to "", class: "edit" do
+        = "Edit"
+  .main-body
+    .main-posts
+      .message
+        .message-header
+          .message-header__name
+            ="ユーザー名"
+          .message-header__time
+            ="2019/04/09(Tue) 16:08:49"
+        .message__content
+          ="ああああああああああああああ"
+      .message
+        .message-header
+          .message-header__name
+            ="ユーザー名"
+          .message-header__time
+            ="2019/04/09(Tue) 16:08:49"
+        .message__content
+          ="ああああああああああああああ"
+      .message
+        .message-header
+          .message-header__name
+            ="ユーザー名"
+          .message-header__time
+            ="2019/04/09(Tue) 16:08:49"
+        .message__content
+          ="ああああああああああああああ"
+      .message
+        .message-header
+          .message-header__name
+            ="ユーザー名"
+          .message-header__time
+            ="2019/04/09(Tue) 16:08:49"
+        .message__content
+          ="ああああああああああああああ"
+      .message
+        .message-header
+          .message-header__name
+            ="ユーザー名"
+          .message-header__time
+            ="2019/04/09(Tue) 16:08:49"
+        .message__content
+          ="ああああああああああああああ"
+  .form
+    %form
+      %input.form.box
+      .box__mask
+        %label.box__mask__image
+          = fa_icon 'picture-o', class: 'icon'
+          %input.box__mask__hidden{type: 'file'}
+      %input.form.submit{type: 'submit', value: 'Send'}
