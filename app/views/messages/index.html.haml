@@ -9,21 +9,12 @@
         = fa_icon 'cog'
 
   .side-groups
-    .side-group
-      .side-group__name
-        グループ名
-      .side-group__message
-        メッセージ
-    .side-group
-      .side-group__name
-        グループ名
-      .side-group__message
-        メッセージ
-    .side-group
-      .side-group__name
-        グループ名
-      .side-group__message
-        メッセージ
+    - @groups.each do |group|
+      .side-group
+        .side-group__name
+          = group.name
+        .side-group__message
+          = group.created_at
 
 .main-content
   .main-header
