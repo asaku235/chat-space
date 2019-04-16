@@ -14,65 +14,35 @@
         .side-group__name
           = group.name
         .side-group__message
-          = group.created_at
+          = group.show_last_message
 
 .main-content
   .main-header
     .left
       .left__selected-group
-        選択されたグループ名
+        = @group.name
       .left__members
-        Members : karimen
+        = "Members : " + current_user.name
     .right
-      = link_to "", class: "edit" do
+      = link_to edit_group_path(@group.id), class: "edit" do
         = "Edit"
   .main-body
     .main-posts
-      .message
-        .message-header
-          .message-header__name
-            ="ユーザー名"
-          .message-header__time
-            ="2019/04/09(Tue) 16:08:49"
-        .message__content
-          ="ああああああああああああああ"
-      .message
-        .message-header
-          .message-header__name
-            ="ユーザー名"
-          .message-header__time
-            ="2019/04/09(Tue) 16:08:49"
-        .message__content
-          ="ああああああああああああああ"
-      .message
-        .message-header
-          .message-header__name
-            ="ユーザー名"
-          .message-header__time
-            ="2019/04/09(Tue) 16:08:49"
-        .message__content
-          ="ああああああああああああああ"
-      .message
-        .message-header
-          .message-header__name
-            ="ユーザー名"
-          .message-header__time
-            ="2019/04/09(Tue) 16:08:49"
-        .message__content
-          ="ああああああああああああああ"
-      .message
-        .message-header
-          .message-header__name
-            ="ユーザー名"
-          .message-header__time
-            ="2019/04/09(Tue) 16:08:49"
-        .message__content
-          ="ああああああああああああああ"
+      - @messages.each do |message|
+        .message
+          .message-header
+            .message-header__name
+              = message.user.name
+            .message-header__time
+              = message.created_at
+          .message__content
+            = message.content
+
   .form
-    %form
-      %input.form.box
-      .box__mask
-        %label.box__mask__image
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+      .form__mask
+        = f.label :image, class: 'form__mask__image' do
           = fa_icon 'picture-o', class: 'icon'
-          %input.box__mask__hidden{type: 'file'}
-      %input.form.submit{type: 'submit', value: 'Send'}
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'form__submit'
