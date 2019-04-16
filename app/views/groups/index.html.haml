@@ -20,54 +20,24 @@
   .main-header
     .left
       .left__selected-group
-        選択されたグループ名
+        = @selected_group
       .left__members
         Members : karimen
     .right
-      = link_to "", class: "edit" do
+      = link_to edit_group_path(@selected_group.id), class: "edit" do
         = "Edit"
   .main-body
     .main-posts
+      - @messages.each do |message|
       .message
         .message-header
           .message-header__name
-            ="ユーザー名"
+            = message.user.name
           .message-header__time
-            ="2019/04/09(Tue) 16:08:49"
+            = message.created_at
         .message__content
-          ="ああああああああああああああ"
-      .message
-        .message-header
-          .message-header__name
-            ="ユーザー名"
-          .message-header__time
-            ="2019/04/09(Tue) 16:08:49"
-        .message__content
-          ="ああああああああああああああ"
-      .message
-        .message-header
-          .message-header__name
-            ="ユーザー名"
-          .message-header__time
-            ="2019/04/09(Tue) 16:08:49"
-        .message__content
-          ="ああああああああああああああ"
-      .message
-        .message-header
-          .message-header__name
-            ="ユーザー名"
-          .message-header__time
-            ="2019/04/09(Tue) 16:08:49"
-        .message__content
-          ="ああああああああああああああ"
-      .message
-        .message-header
-          .message-header__name
-            ="ユーザー名"
-          .message-header__time
-            ="2019/04/09(Tue) 16:08:49"
-        .message__content
-          ="ああああああああああああああ"
+          = message.content
+
   .form
     %form
       %input.form.box
