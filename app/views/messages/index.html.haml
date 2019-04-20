@@ -38,6 +38,9 @@
               = message.created_at
           .message__content
             = message.content
+            - if message.image?
+              %br
+              = image_tag message.image
 
   .form
     = form_for [@group, @message], json: { id: "new-message", class: "new-message" } do |f|

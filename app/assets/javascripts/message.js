@@ -1,5 +1,12 @@
 $(function() {
 function buildHTML(message){
+if (message.image) {
+  var insertImage =`
+                     <br><img src="${message.image.url}">
+                   `;
+} else {
+  var insertImage = '';
+}
 var htm = `
             <div class="message">
               <div class="message-header">
@@ -12,8 +19,8 @@ var htm = `
               </div>
               <div class="message__content">
                 ${message.content}
+                ${insertImage}
               </div>
-              ${message.image}
             </div>
            `;
 return htm;
