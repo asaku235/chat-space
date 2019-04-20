@@ -1,6 +1,6 @@
 $(function() {
 function buildHTML(message){
-if (message.image) {
+if (message.image.url) {
   var insertImage =`
                      <br><img src="${message.image.url}">
                    `;
@@ -26,19 +26,14 @@ var htm = `
 return htm;
 }
 
-function scrollBottom(){
-    var target = $('.message').last();
-    var position = target.offset().top + $('.main-posts').scrollTop();
-    $('.main-posts').animate({
-      scrollTop: position
-    }, 300, 'swing');
-  }
+function scroll(){
+$('.main-body').animate({ scrollTop: $('.main-body')[0].scrollHeight});
+}
 
 $('#new_message').on('submit', function(e) {
     e.preventDefault();
     var url = $(this).attr('action')
     var formData = new FormData(this);
-
     $.ajax({
     url: url,
     type: "POST",
@@ -53,12 +48,12 @@ $('#new_message').on('submit', function(e) {
     $('.main-posts').append(htm);
     $('.form__message').val('');
     $('.form__submit').prop('disabled', false);
+    scroll();
     })
     .fail(function(){
     alert('error');
     $('.form__message').val('');
     $('.form__submit').prop('disabled', false);
     })
-    scrollBottom();
 })
 });
