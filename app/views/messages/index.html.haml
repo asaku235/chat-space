@@ -12,7 +12,8 @@
     - @groups.each do |group|
       .side-group
         .side-group__name
-          = group.name
+          = link_to group_messages_path(group.id), class: "iconcolor" do
+            = group.name
         .side-group__message
           = group.show_last_message
 
@@ -39,7 +40,7 @@
             = message.content
 
   .form
-    = form_for [@group, @message] do |f|
+    = form_for [@group, @message], json: { id: "new-message", class: "new-message" } do |f|
       = f.text_field :content, class: 'form__message', placeholder: 'type a message'
       .form__mask
         = f.label :image, class: 'form__mask__image' do
