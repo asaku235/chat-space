@@ -8,11 +8,17 @@ def index
 end
 
 def create
+  @groups = Group.all
   @message = @group.messages.new(message_params)
   if @message.save
-    redirect_to group_messages_path(@group), notice: 'メッセージを送信しました'
+      respond_to do |format|
+        format.html { redirect_to group_messages_path }
+        format.json
+      end
   else
-    redirect_to group_messages_path(@group), notice: 'メッセージを入力してください'
+     @message = @group.messages.includes(:user)
+     flash.now[:alert] = 'メッセージを入力してください'
+     render :index
   end
 end
 
