@@ -1,8 +1,6 @@
 $(function() {
     function buildHTML(message) {
-        message.image.url ?
-        var insertImage = `<br><img src="${message.image.url}">`
-        : var insertImage = '';
+        var insertImage ＝ message.image.url? `<br><img src="${message.image.url}">`: '';
         var htm = `
             <div class="message">
               <div class="message-header">
