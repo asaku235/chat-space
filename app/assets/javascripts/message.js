@@ -1,7 +1,6 @@
 $(function() {
     function buildHTML(message) {
-        message.image.url ?
-        var insertImage = `<br><img src="${message.image.url}">`: var insertImage = '';
+        var insertImage ＝ message.image.url? `<br><img src="${message.image.url}">`: '';
         var htm = `
             <div class="message">
               <div class="message-header">
@@ -20,7 +19,6 @@ $(function() {
           `;
         return htm;
     }
-
     function scroll() {
         $('.main-posts').animate({ scrollTop: $('.main-posts')[0].scrollHeight });
     }
@@ -37,7 +35,6 @@ $(function() {
                 processData: false,
                 contentType: false
             })
-
             .done(function(data) {
                 var htm = buildHTML(data);
                 $('.main-posts').append(htm);

@@ -23,7 +23,9 @@
       .left__selected-group
         = @group.name
       .left__members
-        = "Members : " + current_user.name
+        Members:
+        - @group.group_users.each do |group_user|
+          = group_user.user.name
     .right
       = link_to edit_group_path(@group.id), class: "edit" do
         = "Edit"
