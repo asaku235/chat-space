@@ -64,7 +64,7 @@ $(function() {
             });
         })
         .fail(function() {
-            console.log('error');
+            //console.log('error');
         })
         }
     }, 5000);
