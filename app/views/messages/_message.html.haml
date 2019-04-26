@@ -1,0 +1,11 @@
+.message{"data-message-id": message.id }
+  .message-header
+    .message-header__name
+      = message.user.name
+    .message-header__time
+      = message.created_at
+  .message__content
+    = message.content
+    - if message.image?
+      %br
+      = image_tag message.image

@@ -31,21 +31,10 @@
         = "Edit"
   .main-body
     .main-posts
-      - @messages.each do |message|
-        .message
-          .message-header
-            .message-header__name
-              = message.user.name
-            .message-header__time
-              = message.created_at
-          .message__content
-            = message.content
-            - if message.image?
-              %br
-              = image_tag message.image
+      = render @messages
 
   .form
-    = form_for [@group, @message], json: { id: "new-message", class: "new-message" } do |f|
+    = form_for [@group, @message] do |f|
       = f.text_field :content, class: 'form__message', placeholder: 'type a message'
       .form__mask
         = f.label :image, class: 'form__mask__image' do
