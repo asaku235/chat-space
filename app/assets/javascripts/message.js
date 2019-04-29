@@ -20,7 +20,7 @@ $(function() {
         return html;
     };
     function scroll() {
-        $('.main-posts').animate({ scrollTop: $('.main-posts')[0].scrollHeight }, 'fast');
+        $('.main-body').animate({ scrollTop: $('.main-body')[0].scrollHeight }, 'fast');
     };
     $('#new_message').on('submit', function(e) {
         e.preventDefault();
@@ -38,6 +38,7 @@ $(function() {
             var html = buildHTML(data);
             $('.main-posts').append(html);
             $('#new_message')[0].reset();
+            scroll();
             $('.form__submit').prop('disabled', false);
         })
         .fail(function() {
